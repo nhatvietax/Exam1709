@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="En">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Tính Điểm</title>
+    <link rel="stylesheet" href="ex2.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="2" > <h2 class="tieude" >BANG DIEM CUA EM </h2>  </th>   </tr>
+                
+            <tr><td>Semester 1     </td>   <td><input type="number" id="Semester1"></td></tr>
+            
+            <tr><td>Semester 2 </td><td><input type="number" id="Semester2"></td></tr>
+            <tr><td>Year :     </td><td><input type="number" id="Year"></td></tr>
+            <tr><td>Summarise  </td><td><input type="text" id="Summarise" readonly></td></tr>
+            <tr><td>Student Classification</td>   <td><input type="text" id="Classification" readonly></td></tr>
+            <tr>
+                <br>
+                <th rowspan="1" > <button onclick="result()">OK</button></th>
+                <th rowspan="0"><button class="cancel" onclick="huy()">Cancel</button></th>
+        </tr>
+    </table>
+
+
+    <script>
+        function result() {
+            var Semester1 = parseFloat(document.getElementById('Semester1').value);
+            var Semester2 = parseFloat(document.getElementById('Semester2').value);
+            var Summarise = (Semester1 + Semester2) / 2;
+            document.getElementById('Summarise').value = Summarise.toFixed(2);
+
+            var Classification;
+            if (Summarise >= 8) {
+                Classification = 'Giỏi';
+            } else if (Summarise >= 6.5) {
+                Classification = 'Khá';
+            } else if (Summarise >= 5) {
+                Classification = 'Trung Bình';
+            } else {
+                Classification = 'Yếu';
+            }
+            document.getElementById('Classification').value = Classification;
+        }
+
+        function huy(){
+            document.getElementById('Semester1').value = '';
+            document.getElementById('Semester2').value = '';
+            document.getElementById('Year').value = '';
+            document.getElementById('Summarise').value = '';
+            document.getElementById('Classification').value = '';
+        }
+    </script>
+</body>
+</html>
